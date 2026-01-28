@@ -1,4 +1,6 @@
+import "./App.css";
 import { useEffect, useState } from "react";
+
 
 function App() {
   // ----- State for products -----
@@ -104,77 +106,108 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Product Catalog</h1>
+    <div className="container">
+  <h1>🛒 Product Catalog</h1>
 
-      {/* ----- Add Product Form ----- */}
-      <h2>Add a New Product</h2>
-      <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="text"           // changed from "number" to "text"
-          placeholder="Price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          required
-        />
-        <button type="submit">Add Product</button>
-      </form>
+  {/* ----- Add Product Form ----- */}
+  <h2>Add a New Product</h2>
+  <form onSubmit={handleSubmit} className="add-form">
+    <input
+      type="text"
+      placeholder="Product Name"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      required
+    />
+    <input
+      type="text"
+      placeholder="Price"
+      value={price}
+      onChange={(e) => setPrice(e.target.value)}
+      required
+    />
+    <input
+      type="text"
+      placeholder="Category"
+      value={category}
+      onChange={(e) => setCategory(e.target.value)}
+      required
+    />
+    <button type="submit" className="add-btn">Add Product</button>
+  </form>
 
-      {/* ----- Products List ----- */}
-      <h2>Products List</h2>
-      {products.length === 0 ? (
-        <p>No products available</p>
-      ) : (
-        <ul>
-          {products.map((product) => (
-            <li key={product.id} style={{ marginBottom: "10px" }}>
-              {editingId === product.id ? (
-                <div>
-                  <input
-                    type="text"
-                    value={editName}
-                    onChange={(e) => setEditName(e.target.value)}
-                  />
-                  <input
-                    type="text"           // changed from "number" to "text"
-                    value={editPrice}
-                    onChange={(e) => setEditPrice(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    value={editCategory}
-                    onChange={(e) => setEditCategory(e.target.value)}
-                  />
-                  <button onClick={() => handleUpdate(product.id)}>Save</button>
-                  <button onClick={() => setEditingId(null)}>Cancel</button>
-                </div>
-              ) : (
-                <div>
-                  <strong>{product.name}</strong> – ${product.price} ({product.category})
-                  <button onClick={() => handleEditClick(product)}>Edit</button>
-                  <button onClick={() => handleDelete(product.id)}>Delete</button>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+  {/* ----- Products List ----- */}
+  <h2>Products List</h2>
+
+  {products.length === 0 ? (
+    <p className="empty-text">No products available</p>
+  ) : (
+    <ul className="product-list">
+      {products.map((product) => (
+        <li key={product.id} className="product-card">
+          {editingId === product.id ? (
+            <div className="edit-section">
+              <input
+                type="text"
+                value={editName}
+                onChange={(e) => setEditName(e.target.value)}
+              />
+              <input
+                type="text"
+                value={editPrice}
+                onChange={(e) => setEditPrice(e.target.value)}
+              />
+              <input
+                type="text"
+                value={editCategory}
+                onChange={(e) => setEditCategory(e.target.value)}
+              />
+
+              <div className="actions">
+                <button
+                  className="save-btn"
+                  onClick={() => handleUpdate(product.id)}
+                >
+                  Save
+                </button>
+                <button
+                  className="cancel-btn"
+                  onClick={() => setEditingId(null)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className="product-info">
+                <strong>{product.name}</strong>
+                <span>${product.price}</span>
+                <span className="category">{product.category}</span>
+              </div>
+
+              <div className="actions">
+                <button
+                  className="edit-btn"
+                  onClick={() => handleEditClick(product)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="delete-btn"
+                  onClick={() => handleDelete(product.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </>
+          )}
+        </li>
+      ))}
+    </ul>
+  )}
+</div>)
+
 }
 
 export default App;

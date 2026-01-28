@@ -1,42 +1,177 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* ===== Main Container ===== */
+.container {
+  max-width: 900px;
+  margin: 60px auto; /* more space top & bottom */
+  background: linear-gradient(145deg, #ffffff, #e0f7fa); /* subtle gradient for color */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* stronger shadow for depth */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center the content horizontally */
   text-align: center;
 }
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #2c3e50;
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  /* Center container vertically & horizontally */
+  display: flex;
+  justify-content: center; /* horizontal centering */
+  align-items: center;     /* vertical centering */
+  min-height: 100vh;       /* take full viewport height */
+  margin: 0;               /* remove default margin */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+
+/* ===== Headings ===== */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.4rem;
+  color: #00796b; /* add color */
 }
 
-.card {
-  padding: 2em;
+h2 {
+  margin: 25px 0 15px;
+  font-size: 1.5rem;
+  border-bottom: 3px solid #00acc1; /* colored underline */
+  padding-bottom: 6px;
+  color: #004d40;
 }
 
-.read-the-docs {
-  color: #888;
+/* ===== Add Product Form ===== */
+.add-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 12px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.add-form input {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: all 0.2s ease;
+}
+
+.add-form input:focus {
+  outline: none;
+  border-color: #00acc1; /* highlight with color */
+  box-shadow: 0 0 5px #00acc1;
+}
+
+/* ===== Buttons ===== */
+.add-btn {
+  background: #26a69a;
+  color: white;
+}
+
+.add-btn:hover {
+  background: #00796b;
+}
+
+.edit-btn {
+  background: #0288d1;
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #01579b;
+}
+
+.delete-btn {
+  background: #e53935;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #b71c1c;
+}
+
+.save-btn {
+  background: #43a047;
+  color: white;
+}
+
+.cancel-btn {
+  background: #757575;
+  color: white;
+}
+
+/* ===== Product List ===== */
+.product-list {
+  list-style: none;
+  width: 100%;
+}
+
+.product-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #b2ebf2;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Product Info ===== */
+.product-info {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  font-size: 15px;
+  color: #333;
+}
+
+.product-info strong {
+  font-size: 16px;
+  color: #00796b; /* colored text */
+}
+
+.category {
+  background: #b2ebf2;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #006064;
+}
+
+/* ===== Action Buttons ===== */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ===== Edit Mode ===== */
+.edit-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.edit-section input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: all 0.2s ease;
+}
+
+.edit-section input:focus {
+  outline: none;
+  border-color: #43a047;
+  box-shadow: 0 0 5px #43a047;
+}
+
+/* ===== Empty State ===== */
+.empty-text {
+  text-align: center;
+  color: #555;
+  margin-top: 20px;
 }
